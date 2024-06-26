@@ -1,8 +1,45 @@
+const rc = require('rc');
+
+// Load the configuration for 'myapp'
+const config = rc('myapp', {
+  // Default configuration
+  port: 3000,
+  env: 'development'
+});
+
+console.log('Configuration:', config);
+
 const express = require('express');
 const app = express();
 const Joi = require('joi');
 
 app.use(express.json());
+
+// Example middleware to log the environment
+app.use((req, res, next) => {
+    console.log('Environment:', app.get('env'));
+    next();
+});
+
+// Middleware function
+const myMiddleware = (req, res, next) => {
+    console.log('Middleware function executed!');
+    // Perform some action
+    // e.g., log request details
+    console.log(`Request URL: ${req.url}`);
+    console.log(`Request Method: ${req.method}`);
+
+    // Call the next middleware or route handler
+    next();
+};
+
+// Use the middleware
+app.use(myMiddleware);
+
+// You can also apply middleware to specific routes:
+app.get('/api/about', myMiddleware, (req, res) => {
+    res.send('About Page');
+});
 
 const courses = [
     {id: 1, name: 'course1'},

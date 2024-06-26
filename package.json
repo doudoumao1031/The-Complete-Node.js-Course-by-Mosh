@@ -12,6 +12,7 @@
     "express": "^4.19.2",
     "joi": "^17.13.3",
     "mongoose": "^8.4.0",
+    "rc": "^1.2.8",
     "underscore": "^1.13.6"
   },
   "devDependencies": {
