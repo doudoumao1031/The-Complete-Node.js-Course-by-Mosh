@@ -4,7 +4,11 @@ const p = new Promise((resolve, reject) => {
     // ...
     // as a best practice it is better to pass an error object to the reject method, instead of a string
     // reject(new Error('message'));
-    resolve(1);
+    // resolve(1);
+    setTimeout(() => {
+        // resolve(1); // pending => resolved, fulfilled
+        reject(new Error('message')); // pending => rejected
+    })
 });
 
 // consume the promise
