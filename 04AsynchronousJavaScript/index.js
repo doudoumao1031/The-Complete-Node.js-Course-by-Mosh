@@ -1,15 +1,23 @@
-console.log('Before')
-const user = getUser(1);
-console.log(user);
-console.log('After');
+// console.log('Before')
+// const user = getUser(1);
+// console.log(user);
+// console.log('After');
 
 // Callbacks
 // Promises
 // Async/await
 
+getUser(1)
+    .then(user => getRepositories(user.gitHubUsername))
+    .then(repos => getCommits(repos[0]))
+    .then(commits => console.log('Commits', commits))
+    .catch(err => console.log('Error', err.message));
+
+
+
 function getUser(id) {
     return new Promise((resolve, reject) => {
-        // Kick off some async work
+        // Kick off some async work 
         // ...
         setTimeout(() => {
             console.log('Reading a user from a database...');
