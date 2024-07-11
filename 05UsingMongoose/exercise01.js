@@ -7,12 +7,13 @@ mongoose.connect('mongodb://localhost:27017/mongo-exercises')
 const courseSchema = new mongoose.Schema({
     name: String,
     author: String,
-    tags: [ String ],
+    tags: [ String ],   
     date: { type: Date, default: Date.now },
     isPublished: Boolean,
     price: Number,
 });
 
+// Yes, the first parameter in mongoose.model('Course', courseSchema) is the name of the model. By default, Mongoose will pluralize this name to determine the name of the collection. So, in this case, Mongoose will look for a collection named courses in your database.
 const Course = mongoose.model('Course', courseSchema);
 
 async function getCourses() {
@@ -26,7 +27,7 @@ async function getCourses() {
 
 async function run() {
     const courses = await getCourses()
-    console.log(courses)
+    console.log(courses);
 }
 
 run()
