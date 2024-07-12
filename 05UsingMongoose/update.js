@@ -29,7 +29,8 @@ async function updateCourse(id) {
     const result = await course.save()
     console.log(result)
 
-    // Approach: Update first
+    // Approach:  
+    
     // Update directly
     // Optionally: get the updated document
 }
