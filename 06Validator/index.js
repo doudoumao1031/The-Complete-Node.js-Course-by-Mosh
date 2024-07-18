@@ -43,19 +43,19 @@ async function createCourse() {
     }
 }
 
-async function getCourses() {
+// async function getCourses() {
 
-    const courses = await Course
-        .find({ isPublished: true, tags: 'backend' })
-        .sort({ name: 1 })
-        .select({ name: 1, author: 1 })
-    return courses
-}
+//     const courses = await Course
+//         .find({ isPublished: true, tags: 'backend' })
+//         .sort({ name: 1 })
+//         .select({ name: 1, author: 1 })
+//     return courses
+// }
 
-async function removeCourse(id) {
-    const result = await removeCourse.deleteOne({_id: id})
-    console.log(result)
-}
+// async function removeCourse(id) {
+//     const result = await removeCourse.deleteOne({_id: id})
+//     console.log(result)
+// }
 
 async function run() {
     const courses = await createCourse()
